@@ -1,7 +1,7 @@
 {
-  "name": "express-typescript-boilerplate",
-  "version": "3.0.0",
-  "description": "A delightful way to building a Node.js RESTful API Services with beautiful code written in TypeScript",
+  "name": "omnia",
+  "version": "1.0.0",
+  "description": "Omnia backend",
   "main": "src/app.ts",
   "scripts": {
     "start": "nps",
@@ -13,30 +13,6 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "repository": "git+ssh://git@github.com/w3tec/express-typescript-boilerplate.git",
-  "keywords": [
-    "NodeJS",
-    "TypeScript",
-    "express",
-    "boilerplate",
-    "skeleton",
-    "starter-kit",
-    "w3tec.ch"
-  ],
-  "homepage": "https://github.com/w3tec/express-typescript-boilerplate#readme",
-  "author": "w3tec.ch <info@w3tec.ch>",
-  "contributors": [
-    {
-      "name": "David Weber",
-      "email": "david.weber@w3tec.ch",
-      "url": "https://github.com/dweber019"
-    },
-    {
-      "name": "Gery Hirschfeld",
-      "email": "gery.hirschfeld@w3tec.ch",
-      "url": "https://github.com/hirsch88"
-    }
-  ],
   "dependencies": {
     "@types/bluebird": "^3.5.18",
     "@types/body-parser": "^1.16.7",
@@ -112,7 +88,6 @@
     "testEnvironment": "node",
     "setupTestFrameworkScriptFile": "./test/unit/lib/setup.ts"
   },
-  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^21.1.5",
     "@types/nock": "^8.2.1",
