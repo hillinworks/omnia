@@ -15,7 +15,7 @@ export class Entry {
     @IsNotEmpty()
     public key: string;
 
-    @ManyToMany(type => Aspect)
+    @ManyToMany(type => Aspect, { eager: true })
     @JoinTable()
     public aspects: Aspect[];
 
@@ -23,8 +23,8 @@ export class Entry {
     public data: any;
 
     @OneToMany(type => Entry, entry => entry.parent)
-    public children: Entry[];
+    public children: Promise<Entry[]>;
 
     @ManyToOne(type => Entry, entry => entry.children)
-    public parent: Entry;
+    public parent: Promise<Entry>;
 }

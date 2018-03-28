@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 
 import { Comparability } from "../../../core/data/comparability";
 import { DataTypes } from "../../../core/data/types/dataTypes";
@@ -8,12 +8,16 @@ import { Aspect } from "./Aspect";
 @Entity()
 export class Property {
 
-    @PrimaryGeneratedColumn("uuid")
-    public id: string;
+    @PrimaryColumn("varchar", { length: 512, collation: "ascii_general_ci", charset: "ascii" })
+    @IsNotEmpty()
+    public namespace: string;
 
-    @Column("varchar", { length: 64 })
+    @PrimaryColumn("varchar", { length: 64, collation: "ascii_general_ci", charset: "ascii" })
     @IsNotEmpty()
     public key: string;
+
+    @Column("tinyint")
+    public isObsolete: boolean;
 
     @Column("varchar", { length: 128 })
     @IsNotEmpty()
@@ -33,5 +37,5 @@ export class Property {
     public comparability: Comparability;
 
     @ManyToOne(type => Aspect)
-    public aspect: Aspect;
+    public aspect: Promise<Aspect>;
 }

@@ -1,6 +1,6 @@
 export enum Comparability {
-    NotComparable,
-    PlainComparable,
-    BiggerBetter,
-    SmallerBetter,
+    NotComparable = "NotComparable",
+    PlainComparable = "PlainComparable",
+    BiggerBetter = "BiggerBetter",
+    SmallerBetter = "SmallerBetter",
 }

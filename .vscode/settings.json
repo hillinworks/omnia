@@ -15,6 +15,7 @@
         "linqlite",
         "microframework",
         "middlewares",
+        "tinyint",
         "tinytext",
         "typedi",
         "typeorm",

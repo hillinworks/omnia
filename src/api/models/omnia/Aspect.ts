@@ -21,10 +21,17 @@ export class Aspect {
     @Column("text")
     public description: string;
 
-    @OneToMany(type => Property, property => property.aspect)
+    @OneToMany(type => Property, property => property.aspect, { eager: true, cascadeInsert: true, cascadeUpdate: false })
     public properties: Property[];
 
     @ManyToMany(type => Entry, entry => entry.aspects)
-    public entries: Entry[];
+    public entries: Promise<Entry[]>;
 
+    public get fullKey(): string {
+        if (this.namespace && this.namespace.length > 0) {
+            return `${this.namespace}.${this.key}`;
+        }
+
+        return this.key;
+    }
 }

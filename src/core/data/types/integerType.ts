@@ -7,5 +7,5 @@ import { NumberType } from "./numberType";
 @RegisteredDataType
 export class DecimalType extends NumberType<IIntegerMetadata> {
     public get name(): string { return localize("integer"); }
-    public get key(): DataTypes { return DataTypes.integer; }
+    public get key(): DataTypes { return DataTypes.Integer; }
 }

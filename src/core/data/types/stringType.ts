@@ -32,5 +32,5 @@ export class StringType extends DataType<string, IStringMetadata> {
     }
 
     public get name(): string { return localize("string"); }
-    public get key(): DataTypes { return DataTypes.string; }
+    public get key(): DataTypes { return DataTypes.String; }
 }

@@ -1,11 +1,10 @@
 export enum DataTypes {
-    string,
-    identifier, // TD
-    markdown,
-    integer,
-    decimal,
-    reference,   // TD
-    year,    // TD
-    date,    // TD
-    testnew,
+    String = "String",
+    Identifier = "Identifier", // TD
+    Markdown = "Markdown",
+    Integer = "Integer",
+    Decimal = "Decimal",
+    Reference = "Reference",   // TD
+    Year = "Year",    // TD
+    Date = "Date",    // TD
 }

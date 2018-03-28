@@ -10,4 +10,12 @@ export const events = {
     pet: {
         created: "onPetCreate",
     },
+    omnia: {
+        aspect: {
+            created: "onOmniaAspectCreated",
+        },
+        entry: {
+            created: "onOmniaEntryCreated",
+        },
+    },
 };
