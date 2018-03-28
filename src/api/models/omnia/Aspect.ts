@@ -1,6 +1,7 @@
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToMany, OneToMany, PrimaryColumn } from "typeorm";
 
+import { ICompositeKey } from "../../../core/CompositeKey";
 import { Entry } from "./Entry";
 import { Property } from "./Property";
 
@@ -28,10 +29,11 @@ export class Aspect {
     public entries: Promise<Entry[]>;
 
     public get fullKey(): string {
-        if (this.namespace && this.namespace.length > 0) {
-            return `${this.namespace}.${this.key}`;
-        }
+        return ICompositeKey.toString(this);
+    }
 
-        return this.key;
+    public setKey(key: ICompositeKey): void {
+        this.namespace = key.namespace;
+        this.key = key.key;
     }
 }

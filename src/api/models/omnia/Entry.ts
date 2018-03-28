@@ -3,6 +3,7 @@ import {
     Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn
 } from "typeorm";
 
+import { IEntryData } from "../../../core/data/IEntryData";
 import { Aspect } from "./Aspect";
 
 @Entity()
@@ -20,7 +21,7 @@ export class Entry {
     public aspects: Aspect[];
 
     @Column("json")
-    public data: any;
+    public data: IEntryData;
 
     @OneToMany(type => Entry, entry => entry.parent)
     public children: Promise<Entry[]>;

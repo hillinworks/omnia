@@ -1,7 +1,7 @@
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 
-import { Comparability } from "../../../core/data/comparability";
+import { Comparability } from "../../../core/data/Comparability";
 import { DataTypes } from "../../../core/data/types/dataTypes";
 import { Aspect } from "./Aspect";
 

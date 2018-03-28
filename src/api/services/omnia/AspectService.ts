@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { OrmRepository } from "typeorm-typedi-extensions";
 
+import { ICompositeKey } from "../../../core/CompositeKey";
 import { EventDispatcher, EventDispatcherInterface } from "../../../decorators/EventDispatcher";
 import { L } from "../../../lib/linqlite";
 import { Aspect } from "../../models/omnia/Aspect";
@@ -21,8 +22,8 @@ export class AspectService {
         return this.aspectRepository.find();
     }
 
-    public findOne(namespace: string, key: string): Promise<Aspect | undefined> {
-        return this.aspectRepository.findOne({ namespace, key });
+    public findOne(key: ICompositeKey): Promise<Aspect | undefined> {
+        return this.aspectRepository.findOne(key);
     }
 
     public async create(aspect: Aspect): Promise<Aspect> {
@@ -32,9 +33,8 @@ export class AspectService {
         return newAspect;
     }
 
-    public async update(namespace: string, key: string, aspect: Aspect): Promise<Aspect> {
-        aspect.namespace = namespace;
-        aspect.key = key;
+    public async update(key: ICompositeKey, aspect: Aspect): Promise<Aspect> {
+        aspect.setKey(key);
 
         if (aspect.properties) {
             // mark non-existed properties as obsolete
@@ -51,8 +51,8 @@ export class AspectService {
         return await this.aspectRepository.save(aspect);
     }
 
-    public delete(namespace: string, key: string): Promise<void> {
-        return this.aspectRepository.delete({ namespace, key });
+    public delete(key: ICompositeKey): Promise<void> {
+        return this.aspectRepository.delete(key);
     }
 
     private updatePropertyNamespaces(aspect: Aspect): void {
