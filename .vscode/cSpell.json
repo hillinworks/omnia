@@ -7,11 +7,14 @@
     // words - list of words to be always considered correct
     "words": [
         "hsts",
+        "Linq",
+        "linqlite",
         "microframework",
         "middlewares",
         "Omnia",
         "Subdomains",
         "tinytext",
+        "typedi",
         "typeorm",
         "varchar"
     ],

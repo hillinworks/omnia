@@ -9,11 +9,14 @@
     "files.trimTrailingWhitespace": true,
     "editor.formatOnSave": false,
     "cSpell.words": [
+        "Linq",
         "Omnia",
         "Subdomains",
+        "linqlite",
         "microframework",
         "middlewares",
         "tinytext",
+        "typedi",
         "typeorm",
         "varchar"
     ]
