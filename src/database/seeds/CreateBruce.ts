@@ -1,7 +1,7 @@
-import { Connection } from 'typeorm';
+import { Connection } from "typeorm";
 
-import { User } from '../../../src/api/models/User';
-import { Factory, Seed } from '../../lib/seed/types';
+import { User } from "../../../src/api/models/User";
+import { Factory, Seed } from "../../lib/seed/types";
 
 export class CreateBruce implements Seed {
 
@@ -29,9 +29,9 @@ export class CreateBruce implements Seed {
         const em = connection.createEntityManager();
 
         const user = new User();
-        user.firstName = 'Bruce';
-        user.lastName = 'Wayne';
-        user.email = 'bruce.wayne@wayne-enterprises.com';
+        user.firstName = "Bruce";
+        user.lastName = "Wayne";
+        user.email = "bruce.wayne@wayne-enterprises.com";
         return await em.save(user);
     }
 

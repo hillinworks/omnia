@@ -1,5 +1,5 @@
-import { EventDispatcher as EventDispatcherClass } from 'event-dispatch';
-import { Container } from 'typedi';
+import { EventDispatcher as EventDispatcherClass } from "event-dispatch";
+import { Container } from "typedi";
 
 export function EventDispatcher(): any {
     return (object: any, propertyName: string, index?: number): any => {
@@ -8,4 +8,4 @@ export function EventDispatcher(): any {
     };
 }
 
-export { EventDispatcher as EventDispatcherInterface } from 'event-dispatch';
+export { EventDispatcher as EventDispatcherInterface } from "event-dispatch";

@@ -1,7 +1,7 @@
-import { Container } from 'typedi';
-import { Connection, createConnection, useContainer } from 'typeorm';
+import { Container } from "typedi";
+import { Connection, createConnection, useContainer } from "typeorm";
 
-import { env } from '../../src/env';
+import { env } from "../../src/env";
 
 export const createDatabaseConnection = async (): Promise<Connection> => {
     useContainer(Container);

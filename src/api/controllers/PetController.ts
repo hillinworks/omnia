@@ -1,13 +1,13 @@
 import {
     Authorized, Body, Delete, Get, JsonController, OnUndefined, Param, Post, Put
-} from 'routing-controllers';
+} from "routing-controllers";
 
-import { PetNotFoundError } from '../errors/PetNotFoundError';
-import { Pet } from '../models/Pet';
-import { PetService } from '../services/PetService';
+import { PetNotFoundError } from "../errors/PetNotFoundError";
+import { Pet } from "../models/Pet";
+import { PetService } from "../services/PetService";
 
 @Authorized()
-@JsonController('/pets')
+@JsonController("/pets")
 export class PetController {
 
     constructor(
@@ -19,9 +19,9 @@ export class PetController {
         return this.petService.find();
     }
 
-    @Get('/:id')
+    @Get("/:id")
     @OnUndefined(PetNotFoundError)
-    public one( @Param('id') id: string): Promise<Pet | undefined> {
+    public one( @Param("id") id: string): Promise<Pet | undefined> {
         return this.petService.findOne(id);
     }
 
@@ -30,13 +30,13 @@ export class PetController {
         return this.petService.create(pet);
     }
 
-    @Put('/:id')
-    public update( @Param('id') id: string, @Body() pet: Pet): Promise<Pet> {
+    @Put("/:id")
+    public update( @Param("id") id: string, @Body() pet: Pet): Promise<Pet> {
         return this.petService.update(id, pet);
     }
 
-    @Delete('/:id')
-    public delete( @Param('id') id: string): Promise<void> {
+    @Delete("/:id")
+    public delete( @Param("id") id: string): Promise<void> {
         return this.petService.delete(id);
     }
 

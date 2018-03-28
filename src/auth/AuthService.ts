@@ -1,10 +1,10 @@
-import * as express from 'express';
-import * as request from 'request';
-import { Require, Service } from 'typedi';
+import * as express from "express";
+import * as request from "request";
+import { Require, Service } from "typedi";
 
-import { Logger, LoggerInterface } from '../decorators/Logger';
-import { env } from '../env';
-import { TokenInfoInterface } from './TokenInfoInterface';
+import { Logger, LoggerInterface } from "../decorators/Logger";
+import { env } from "../env";
+import { TokenInfoInterface } from "./TokenInfoInterface";
 
 @Service()
 export class AuthService {
@@ -12,29 +12,29 @@ export class AuthService {
     private httpRequest: typeof request;
 
     constructor(
-        @Require('request') r: any,
+        @Require("request") r: any,
         @Logger(__filename) private log: LoggerInterface
     ) {
         this.httpRequest = r;
     }
 
     public parseTokenFromRequest(req: express.Request): string | undefined {
-        const authorization = req.header('authorization');
+        const authorization = req.header("authorization");
 
         // Retrieve the token form the Authorization header
-        if (authorization && authorization.split(' ')[0] === 'Bearer') {
-            this.log.info('Token provided by the client');
-            return authorization.split(' ')[1];
+        if (authorization && authorization.split(" ")[0] === "Bearer") {
+            this.log.info("Token provided by the client");
+            return authorization.split(" ")[1];
         }
 
-        this.log.info('No Token provided by the client');
+        this.log.info("No Token provided by the client");
         return undefined;
     }
 
     public getTokenInfo(token: string): Promise<TokenInfoInterface> {
         return new Promise((resolve, reject) => {
             this.httpRequest({
-                method: 'POST',
+                method: "POST",
                 url: env.auth.route,
                 form: {
                     id_token: token,

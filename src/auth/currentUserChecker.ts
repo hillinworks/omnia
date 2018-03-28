@@ -1,9 +1,9 @@
-import { Action } from 'routing-controllers';
-import { Connection } from 'typeorm';
+import { Action } from "routing-controllers";
+import { Connection } from "typeorm";
 
-import { User } from '../api/models/User';
-import { Logger } from '../lib/logger';
-import { TokenInfoInterface } from './TokenInfoInterface';
+import { User } from "../api/models/User";
+import { Logger } from "../lib/logger";
+import { TokenInfoInterface } from "./TokenInfoInterface";
 
 export function currentUserChecker(connection: Connection): (action: Action) => Promise<User | undefined> {
     const log = new Logger(__filename);
@@ -16,13 +16,13 @@ export function currentUserChecker(connection: Connection): (action: Action) => 
         const em = connection.createEntityManager();
         const user = await em.findOne<User>(User, {
             where: {
-                email: tokeninfo.user_id.replace('auth0|', ''),
+                email: tokeninfo.user_id.replace("auth0|", ""),
             },
         });
         if (user) {
-            log.info('Current user is ', user.toString());
+            log.info("Current user is ", user.toString());
         } else {
-            log.info('Current user is undefined');
+            log.info("Current user is undefined");
         }
 
         return user;

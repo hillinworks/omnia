@@ -1,9 +1,9 @@
-import { Action } from 'routing-controllers';
-import { Container } from 'typedi';
-import { Connection } from 'typeorm';
+import { Action } from "routing-controllers";
+import { Container } from "typedi";
+import { Connection } from "typeorm";
 
-import { Logger } from '../lib/logger';
-import { AuthService } from './AuthService';
+import { Logger } from "../lib/logger";
+import { AuthService } from "./AuthService";
 
 export function authorizationChecker(connection: Connection): (action: Action, roles: any[]) => Promise<boolean> | boolean {
     const log = new Logger(__filename);
@@ -19,14 +19,14 @@ export function authorizationChecker(connection: Connection): (action: Action, r
         const token = authService.parseTokenFromRequest(action.request);
 
         if (token === undefined) {
-            log.warn('No token given');
+            log.warn("No token given");
             return false;
         }
 
         // Request user info at auth0 with the provided token
         try {
             action.request.tokeninfo = await authService.getTokenInfo(token);
-            log.info('Successfully checked token');
+            log.info("Successfully checked token");
             return true;
         } catch (e) {
             log.warn(e);

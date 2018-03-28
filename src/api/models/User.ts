@@ -1,20 +1,20 @@
-import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { IsNotEmpty } from "class-validator";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-import { Pet } from './Pet';
+import { Pet } from "./Pet";
 
 @Entity()
 export class User {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     public id: string;
 
     @IsNotEmpty()
-    @Column({ name: 'first_name' })
+    @Column({ name: "first_name" })
     public firstName: string;
 
     @IsNotEmpty()
-    @Column({ name: 'last_name' })
+    @Column({ name: "last_name" })
     public lastName: string;
 
     @IsNotEmpty()

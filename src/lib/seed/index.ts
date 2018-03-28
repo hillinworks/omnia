@@ -1,17 +1,17 @@
-import 'reflect-metadata';
-import { Connection, ObjectType } from 'typeorm';
+import "reflect-metadata";
+import { Connection, ObjectType } from "typeorm";
 
-import { EntityFactory } from './EntityFactory';
-import { EntityFactoryDefinition, Factory, FactoryFunction, SeedConstructor } from './types';
-import { getNameOfClass } from './utils';
+import { EntityFactory } from "./EntityFactory";
+import { EntityFactoryDefinition, Factory, FactoryFunction, SeedConstructor } from "./types";
+import { getNameOfClass } from "./utils";
 
 // -------------------------------------------------------------------------
 // Handy Exports
 // -------------------------------------------------------------------------
 
-export * from './importer';
-export { Factory, Seed } from './types';
-export { times } from './utils';
+export * from "./importer";
+export { Factory, Seed } from "./types";
+export { times } from "./utils";
 
 // -------------------------------------------------------------------------
 // Types & Variables

@@ -7,7 +7,7 @@ export function toNumber(value: string): number {
 }
 
 export function toBool(value: string): boolean {
-    return value === 'true';
+    return value === "true";
 }
 
 export function normalizePort(port: string): number | string | boolean {

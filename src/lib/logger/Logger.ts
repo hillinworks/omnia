@@ -1,5 +1,5 @@
-import * as path from 'path';
-import * as winston from 'winston';
+import * as path from "path";
+import * as winston from "winston";
 
 /**
  * core.Log
@@ -14,16 +14,16 @@ import * as winston from 'winston';
 
 export class Logger {
 
-    public static DEFAULT_SCOPE = 'app';
+    public static DEFAULT_SCOPE = "app";
 
     private static parsePathToScope(filepath: string): string {
         if (filepath.indexOf(path.sep) >= 0) {
-            filepath = filepath.replace(process.cwd(), '');
-            filepath = filepath.replace(`${path.sep}src${path.sep}`, '');
-            filepath = filepath.replace(`${path.sep}dist${path.sep}`, '');
-            filepath = filepath.replace('.ts', '');
-            filepath = filepath.replace('.js', '');
-            filepath = filepath.replace(path.sep, ':');
+            filepath = filepath.replace(process.cwd(), "");
+            filepath = filepath.replace(`${path.sep}src${path.sep}`, "");
+            filepath = filepath.replace(`${path.sep}dist${path.sep}`, "");
+            filepath = filepath.replace(".ts", "");
+            filepath = filepath.replace(".js", "");
+            filepath = filepath.replace(path.sep, ":");
         }
         return filepath;
     }
@@ -35,19 +35,19 @@ export class Logger {
     }
 
     public debug(message: string, ...args: any[]): void {
-        this.log('debug', message, args);
+        this.log("debug", message, args);
     }
 
     public info(message: string, ...args: any[]): void {
-        this.log('info', message, args);
+        this.log("info", message, args);
     }
 
     public warn(message: string, ...args: any[]): void {
-        this.log('warn', message, args);
+        this.log("warn", message, args);
     }
 
     public error(message: string, ...args: any[]): void {
-        this.log('error', message, args);
+        this.log("error", message, args);
     }
 
     private log(level: string, message: string, args: any[]): void {

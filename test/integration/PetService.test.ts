@@ -1,11 +1,11 @@
-import { Container } from 'typedi';
-import { Connection } from 'typeorm';
+import { Container } from "typedi";
+import { Connection } from "typeorm";
 
-import { Pet } from '../../src/api/models/Pet';
-import { PetService } from '../../src/api/services/PetService';
-import { closeDatabase, createDatabaseConnection, migrateDatabase } from '../utils/database';
+import { Pet } from "../../src/api/models/Pet";
+import { PetService } from "../../src/api/services/PetService";
+import { closeDatabase, createDatabaseConnection, migrateDatabase } from "../utils/database";
 
-describe('PetService', () => {
+describe("PetService", () => {
 
     // -------------------------------------------------------------------------
     // Setup up
@@ -25,9 +25,9 @@ describe('PetService', () => {
     // Test cases
     // -------------------------------------------------------------------------
 
-    test('should create a new pet in the database', async (done) => {
+    test("should create a new pet in the database", async (done) => {
         const pet = new Pet();
-        pet.name = 'test';
+        pet.name = "test";
         pet.age = 1;
         const service = Container.get<PetService>(PetService);
         const resultCreate = await service.create(pet);
@@ -39,7 +39,7 @@ describe('PetService', () => {
             expect(resultFind.name).toBe(pet.name);
             expect(resultFind.age).toBe(pet.age);
         } else {
-            fail('Could not find pet');
+            fail("Could not find pet");
         }
         done();
     });

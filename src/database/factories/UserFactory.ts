@@ -1,7 +1,7 @@
-import * as Faker from 'faker';
+import * as Faker from "faker";
 
-import { User } from '../../../src/api/models/User';
-import { define } from '../../lib/seed';
+import { User } from "../../../src/api/models/User";
+import { define } from "../../lib/seed";
 
 define(User, (faker: typeof Faker, settings: { role: string }) => {
     const gender = faker.random.number(1);

@@ -1,5 +1,5 @@
-import { MutationMetadataArgs } from './MutationMetadataArgs';
-import { QueryMetadataArgs } from './QueryMetadataArgs';
+import { MutationMetadataArgs } from "./MutationMetadataArgs";
+import { QueryMetadataArgs } from "./QueryMetadataArgs";
 
 /**
  * Storage all metadatas read from decorators.

@@ -1,10 +1,10 @@
-import * as MockExpressResponse from 'mock-express-response';
-import { HttpError } from 'routing-controllers';
+import * as MockExpressResponse from "mock-express-response";
+import { HttpError } from "routing-controllers";
 
-import { ErrorHandlerMiddleware } from '../../../src/api/middlewares/ErrorHandlerMiddleware';
-import { LogMock } from '../lib/LogMock';
+import { ErrorHandlerMiddleware } from "../../../src/api/middlewares/ErrorHandlerMiddleware";
+import { LogMock } from "../lib/LogMock";
 
-describe('ErrorHandlerMiddleware', () => {
+describe("ErrorHandlerMiddleware", () => {
 
     let log;
     let middleware;
@@ -14,10 +14,10 @@ describe('ErrorHandlerMiddleware', () => {
         log = new LogMock();
         middleware = new ErrorHandlerMiddleware(log);
         res = new MockExpressResponse();
-        err = new HttpError(400, 'Test Error');
+        err = new HttpError(400, "Test Error");
     });
 
-    test('Should not print stack out in production', () => {
+    test("Should not print stack out in production", () => {
         middleware.isProduction = true;
         middleware.error(err, undefined, res, undefined);
         const json = res._getJSON();
@@ -26,7 +26,7 @@ describe('ErrorHandlerMiddleware', () => {
         expect(log.errorMock).toHaveBeenCalledWith(err.name, [err.message]);
     });
 
-    test('Should print stack out in development', () => {
+    test("Should print stack out in development", () => {
         middleware.isProduction = false;
         middleware.error(err, undefined, res, undefined);
         const json = res._getJSON();

@@ -1,10 +1,10 @@
-import * as express from 'express';
-import { ExpressErrorMiddlewareInterface, HttpError, Middleware } from 'routing-controllers';
+import * as express from "express";
+import { ExpressErrorMiddlewareInterface, HttpError, Middleware } from "routing-controllers";
 
-import { Logger, LoggerInterface } from '../../decorators/Logger';
-import { env } from '../../env';
+import { Logger, LoggerInterface } from "../../decorators/Logger";
+import { env } from "../../env";
 
-@Middleware({ type: 'after' })
+@Middleware({ type: "after" })
 export class ErrorHandlerMiddleware implements ExpressErrorMiddlewareInterface {
 
     public isProduction = env.isProduction;

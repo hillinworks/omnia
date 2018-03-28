@@ -1,7 +1,7 @@
-import { HttpError } from 'routing-controllers';
+import { HttpError } from "routing-controllers";
 
 export class UserNotFoundError extends HttpError {
     constructor() {
-        super(404, 'User not found!');
+        super(404, "User not found!");
     }
 }

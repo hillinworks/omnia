@@ -1,4 +1,4 @@
-import { getMetadataArgsStorage } from './index';
+import { getMetadataArgsStorage } from "./index";
 
 export function Mutation(): any {
     return (object: () => void) => {

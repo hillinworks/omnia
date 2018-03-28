@@ -1,5 +1,5 @@
-import * as glob from 'glob';
-import * as path from 'path';
+import * as glob from "glob";
+import * as path from "path";
 
 // -------------------------------------------------------------------------
 // Util functions
@@ -17,7 +17,7 @@ const loadFiles =
                         : successFn(files));
                 };
 
-const loadFactoryFiles = loadFiles('**/*Factory{.js,.ts}');
+const loadFactoryFiles = loadFiles("**/*Factory{.js,.ts}");
 
 // -------------------------------------------------------------------------
 // Facade functions
@@ -34,6 +34,6 @@ export const loadEntityFactories = (pathToFolder: string): Promise<string[]> => 
 
 export const loadSeeds = (pathToFolder: string): Promise<string[]> => {
     return new Promise((resolve, reject) => {
-        loadFiles('**/*{.js,.ts}')(pathToFolder)(resolve)(reject);
+        loadFiles("**/*{.js,.ts}")(pathToFolder)(resolve)(reject);
     });
 };

@@ -11,7 +11,7 @@
         "no-consecutive-blank-lines": true,
         "quotemark": [
             true,
-            "single",
+            "double",
             "avoid-escape"
         ],
         "interface-name": false,

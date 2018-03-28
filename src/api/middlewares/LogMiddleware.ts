@@ -1,11 +1,11 @@
-import * as express from 'express';
-import * as morgan from 'morgan';
-import { ExpressMiddlewareInterface, Middleware } from 'routing-controllers';
+import * as express from "express";
+import * as morgan from "morgan";
+import { ExpressMiddlewareInterface, Middleware } from "routing-controllers";
 
-import { env } from '../../env';
-import { Logger } from '../../lib/logger';
+import { env } from "../../env";
+import { Logger } from "../../lib/logger";
 
-@Middleware({ type: 'before' })
+@Middleware({ type: "before" })
 export class LogMiddleware implements ExpressMiddlewareInterface {
 
     private log = new Logger(__dirname);

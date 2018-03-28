@@ -1,7 +1,7 @@
-import * as Faker from 'faker';
-import { Connection, ObjectType } from 'typeorm';
+import * as Faker from "faker";
+import { Connection, ObjectType } from "typeorm";
 
-import { EntityFactory } from './EntityFactory';
+import { EntityFactory } from "./EntityFactory";
 
 /**
  * FactoryFunction is the fucntion, which generate a new filled entity

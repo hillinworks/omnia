@@ -1,28 +1,28 @@
-import * as DataLoader from 'dataloader';
-import * as express from 'express';
-import * as GraphQLHTTP from 'express-graphql';
-import { GraphQLObjectType, GraphQLSchema } from 'graphql';
-import { Container as container, ObjectType } from 'typedi';
-import { getCustomRepository, getRepository, Repository } from 'typeorm';
+import * as DataLoader from "dataloader";
+import * as express from "express";
+import * as GraphQLHTTP from "express-graphql";
+import { GraphQLObjectType, GraphQLSchema } from "graphql";
+import { Container as container, ObjectType } from "typedi";
+import { getCustomRepository, getRepository, Repository } from "typeorm";
 
-import { getFromContainer } from './container';
-import { getErrorCode, getErrorMessage, handlingErrors } from './graphql-error-handling';
-import { GraphQLContext, GraphQLContextDataLoader } from './GraphQLContext';
-import { importClassesFromDirectories } from './importClassesFromDirectories';
-import { MetadataArgsStorage } from './MetadataArgsStorage';
+import { getFromContainer } from "./container";
+import { getErrorCode, getErrorMessage, handlingErrors } from "./graphql-error-handling";
+import { GraphQLContext, GraphQLContextDataLoader } from "./GraphQLContext";
+import { importClassesFromDirectories } from "./importClassesFromDirectories";
+import { MetadataArgsStorage } from "./MetadataArgsStorage";
 
 // -------------------------------------------------------------------------
 // Main exports
 // -------------------------------------------------------------------------
 
-export * from './Query';
-export * from './Mutation';
+export * from "./Query";
+export * from "./Mutation";
 
-export * from './AbstractGraphQLHooks';
-export * from './AbstractGraphQLQuery';
-export * from './GraphQLContext';
-export * from './graphql-error-handling';
-export * from './container';
+export * from "./AbstractGraphQLHooks";
+export * from "./AbstractGraphQLQuery";
+export * from "./GraphQLContext";
+export * from "./graphql-error-handling";
+export * from "./container";
 
 // -------------------------------------------------------------------------
 // Main Functions
@@ -45,7 +45,7 @@ export function createDataLoader<T>(obj: ObjectType<T>, options: CreateDataLoade
         try {
             repository = getRepository(obj);
         } catch (errorModel) {
-            throw new Error('Could not create a dataloader, because obj is nether model or repository!');
+            throw new Error("Could not create a dataloader, because obj is nether model or repository!");
         }
     }
 
@@ -58,7 +58,7 @@ export function createDataLoader<T>(obj: ObjectType<T>, options: CreateDataLoade
         }
 
         const handleBatch = (arr: any[]) => options.multiple === true ? arr : arr[0];
-        return ids.map(id => handleBatch(items.filter(item => item[options.key || 'id'] === id)));
+        return ids.map(id => handleBatch(items.filter(item => item[options.key || "id"] === id)));
     });
 }
 
@@ -88,7 +88,7 @@ export function createGraphQLServer<TData>(expressApp: express.Application, opti
     handlingErrors(schema);
 
     // Add graphql layer to the express app
-    expressApp.use(options.route || '/graphql', (request: express.Request, response: express.Response) => {
+    expressApp.use(options.route || "/graphql", (request: express.Request, response: express.Response) => {
 
         // Build GraphQLContext
         const context: GraphQLContext<TData, {}> = {
@@ -130,14 +130,14 @@ export function getMetadataArgsStorage(): MetadataArgsStorage {
  * Create query name out of the class name
  */
 export function createQueryName(name: string): string {
-    return lowercaseFirstLetter(removeSuffix(name, 'Query'));
+    return lowercaseFirstLetter(removeSuffix(name, "Query"));
 }
 
 /**
  * Create mutation name out of the class name
  */
 export function createMutationName(name: string): string {
-    return lowercaseFirstLetter(removeSuffix(name, 'Mutation'));
+    return lowercaseFirstLetter(removeSuffix(name, "Mutation"));
 }
 
 /**
@@ -171,7 +171,7 @@ export function createSchema(options: GraphQLSchemaOptions): GraphQLSchema {
     let queryClasses: Array<() => void> = [];
     if (options && options.queries && options.queries.length) {
         queryClasses = (options.queries as any[]).filter(query => query instanceof Function);
-        const queryDirs = (options.queries as any[]).filter(query => typeof query === 'string');
+        const queryDirs = (options.queries as any[]).filter(query => typeof query === "string");
         queryClasses.push(...importClassesFromDirectories(queryDirs));
     }
 
@@ -181,7 +181,7 @@ export function createSchema(options: GraphQLSchemaOptions): GraphQLSchema {
     });
 
     const RootQuery = new GraphQLObjectType({
-        name: 'Query',
+        name: "Query",
         fields: queries,
     });
 
@@ -189,7 +189,7 @@ export function createSchema(options: GraphQLSchemaOptions): GraphQLSchema {
     let mutationClasses: Array<() => void> = [];
     if (options && options.mutations && options.mutations.length) {
         mutationClasses = (options.mutations as any[]).filter(mutation => mutation instanceof Function);
-        const mutationDirs = (options.mutations as any[]).filter(mutation => typeof mutation === 'string');
+        const mutationDirs = (options.mutations as any[]).filter(mutation => typeof mutation === "string");
         mutationClasses.push(...importClassesFromDirectories(mutationDirs));
     }
 
@@ -199,7 +199,7 @@ export function createSchema(options: GraphQLSchemaOptions): GraphQLSchema {
     });
 
     const RootMutation: GraphQLObjectType = new GraphQLObjectType({
-        name: 'Mutation',
+        name: "Mutation",
         fields: mutations,
     });
 

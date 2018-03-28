@@ -1,11 +1,11 @@
-import { GraphQLObjectType, GraphQLSchema } from 'graphql';
-import * as uuid from 'uuid';
+import { GraphQLObjectType, GraphQLSchema } from "graphql";
+import * as uuid from "uuid";
 
-import { env } from '../../env';
-import { Logger } from '../../lib/logger';
+import { env } from "../../env";
+import { Logger } from "../../lib/logger";
 
 // This feature is a copy from https://github.com/kadirahq/graphql-errors
-const logger = new Logger('app:errors');
+const logger = new Logger("app:errors");
 
 // Mark field/type/schema
 export const Processed = Symbol();
@@ -17,7 +17,7 @@ export const IsUserError = Symbol();
 export class UserError extends Error {
     constructor(...args: any[]) {
         super(args[0]);
-        this.name = 'Error';
+        this.name = "Error";
         this.message = args[0];
         this[IsUserError] = true;
         Error.captureStackTrace(this);
@@ -105,7 +105,7 @@ export const getErrorCode = (message: string): string => {
     if (hasErrorCode(message)) {
         return message.substring(0, 3);
     }
-    return '500'; // unkown error code
+    return "500"; // unkown error code
 };
 
 export const getErrorMessage = (message: string): string => {
@@ -120,6 +120,6 @@ export const hasErrorCode = (error: any): boolean => {
     if (error.message) {
         message = error.message;
     }
-    const reg = new RegExp('^[0-9]{3}: ');
+    const reg = new RegExp("^[0-9]{3}: ");
     return reg.test(message);
 };

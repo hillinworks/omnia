@@ -1,4 +1,4 @@
-import { UserError } from './graphql-error-handling';
+import { UserError } from "./graphql-error-handling";
 
 export abstract class AbstractGraphQLHooks<TContext, TResult, TArgs>  {
 
@@ -23,7 +23,7 @@ export abstract class AbstractGraphQLHooks<TContext, TResult, TArgs>  {
      * This is our resolver, which should gather the needed data;
      */
     public run<S>(rootOrSource: S, args: TArgs, context: TContext): Promise<TResult> | TResult {
-        throw new UserError('Query not implemented!');
+        throw new UserError("Query not implemented!");
     }
 
 }

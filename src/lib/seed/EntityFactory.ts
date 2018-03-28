@@ -1,8 +1,8 @@
-import * as Faker from 'faker';
-import { Connection, ObjectType } from 'typeorm';
+import * as Faker from "faker";
+import { Connection, ObjectType } from "typeorm";
 
-import { FactoryFunction } from './types';
-import { isPromiseLike } from './utils';
+import { FactoryFunction } from "./types";
+import { isPromiseLike } from "./utils";
 
 export class EntityFactory<Entity, Settings> {
 
@@ -39,7 +39,7 @@ export class EntityFactory<Entity, Settings> {
             }
             return entity;
         }
-        throw new Error('Could not found entity');
+        throw new Error("Could not found entity");
     }
 
     /**
@@ -53,10 +53,10 @@ export class EntityFactory<Entity, Settings> {
                 const entity = await this.make();
                 return await em.save<Entity>(entity);
             } catch (error) {
-                throw new Error('Could not save entity');
+                throw new Error("Could not save entity");
             }
         } else {
-            throw new Error('No db connection is given');
+            throw new Error("No db connection is given");
         }
     }
 
@@ -87,7 +87,7 @@ export class EntityFactory<Entity, Settings> {
                     entity[attribute] = await entity[attribute];
                 }
 
-                if (typeof entity[attribute] === 'object') {
+                if (typeof entity[attribute] === "object") {
                     const subEntityFactory = entity[attribute];
                     try {
                         entity[attribute] = await (subEntityFactory as any).make();

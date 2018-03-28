@@ -1,7 +1,7 @@
-import * as glob from 'glob';
-import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
+import * as glob from "glob";
+import { MicroframeworkLoader, MicroframeworkSettings } from "microframework-w3tec";
 
-import { env } from '../env';
+import { env } from "../env";
 
 /**
  * eventDispatchLoader

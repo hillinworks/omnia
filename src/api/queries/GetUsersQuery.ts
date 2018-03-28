@@ -1,10 +1,10 @@
-import { GraphQLFieldConfig, GraphQLList } from 'graphql';
+import { GraphQLFieldConfig, GraphQLList } from "graphql";
 
-import { Logger, LoggerInterface } from '../../decorators/Logger';
-import { AbstractGraphQLQuery, GraphQLContext, Query } from '../../lib/graphql';
-import { User } from '../models/User';
-import { UserService } from '../services/UserService';
-import { UserType } from '../types/UserType';
+import { Logger, LoggerInterface } from "../../decorators/Logger";
+import { AbstractGraphQLQuery, GraphQLContext, Query } from "../../lib/graphql";
+import { User } from "../models/User";
+import { UserService } from "../services/UserService";
+import { UserType } from "../types/UserType";
 
 @Query()
 export class GetUsersQuery extends AbstractGraphQLQuery<GraphQLContext<any, any>, User[], any> implements GraphQLFieldConfig {

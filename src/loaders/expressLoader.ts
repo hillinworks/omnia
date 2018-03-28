@@ -1,14 +1,14 @@
-import { Application } from 'express';
-import { MicroframeworkLoader, MicroframeworkSettings } from 'microframework-w3tec';
-import { createExpressServer } from 'routing-controllers';
+import { Application } from "express";
+import { MicroframeworkLoader, MicroframeworkSettings } from "microframework-w3tec";
+import { createExpressServer } from "routing-controllers";
 
-import { authorizationChecker } from '../auth/authorizationChecker';
-import { currentUserChecker } from '../auth/currentUserChecker';
-import { env } from '../env';
+import { authorizationChecker } from "../auth/authorizationChecker";
+import { currentUserChecker } from "../auth/currentUserChecker";
+import { env } from "../env";
 
 export const expressLoader: MicroframeworkLoader = (settings: MicroframeworkSettings | undefined) => {
     if (settings) {
-        const connection = settings.getData('connection');
+        const connection = settings.getData("connection");
 
         /**
          * We create a new express server instance.
@@ -37,10 +37,10 @@ export const expressLoader: MicroframeworkLoader = (settings: MicroframeworkSett
         // Run application to listen on given port
         if (!env.isTest) {
             const server = expressApp.listen(env.app.port);
-            settings.setData('express_server', server);
+            settings.setData("express_server", server);
         }
 
         // Here we can set the data for other loaders
-        settings.setData('express_app', expressApp);
+        settings.setData("express_app", expressApp);
     }
 };
