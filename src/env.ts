@@ -56,11 +56,6 @@ export const env = {
         synchronize: toBool(getOsEnv("DB_SYNCHRONIZE")),
         logging: toBool(getOsEnv("DB_LOGGING")),
     },
-    graphql: {
-        enabled: toBool(getOsEnv("GRAPHQL_ENABLED")),
-        route: getOsEnv("GRAPHQL_ROUTE"),
-        editor: toBool(getOsEnv("GRAPHQL_EDITOR")),
-    },
     swagger: {
         enabled: toBool(getOsEnv("SWAGGER_ENABLED")),
         route: getOsEnv("SWAGGER_ROUTE"),
