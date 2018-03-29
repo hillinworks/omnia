@@ -1,7 +1,7 @@
 import { localize } from "../../localization/localize";
+import { DataTypes } from "../interfaces/dataTypes";
 import { RegisteredDataType } from "./dataTypeFactory";
-import { DataTypes } from "./dataTypes";
-import { StringType } from "./stringType";
+import { StringType } from "./StringType";
 
 @RegisteredDataType
 export class MarkdownType extends StringType {

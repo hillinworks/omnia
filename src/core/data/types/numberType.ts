@@ -1,7 +1,7 @@
 import { LocMessage } from "../../localization/locMessage";
 import { INumberMetadata } from "../metadata/numberMetadata";
 import { NotComparableError } from "../NotComparableError";
-import { DataType } from "./dataType";
+import { DataType } from "./DataType";
 
 export abstract class NumberType<TMetadata extends INumberMetadata> extends DataType<number, TMetadata> {
 

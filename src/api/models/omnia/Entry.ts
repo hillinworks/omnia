@@ -2,7 +2,7 @@ import {
     Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn
 } from "typeorm";
 
-import { IEntryData } from "../../../core/data/IEntryData";
+import { IEntryData } from "../../../core/data/interfaces/IEntryData";
 import { Aspect } from "./Aspect";
 
 @Entity()

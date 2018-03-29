@@ -1,10 +1,10 @@
 import { localize } from "../../localization/localize";
 import { LocMessage } from "../../localization/locMessage";
+import { DataTypes } from "../interfaces/dataTypes";
 import { IStringMetadata } from "../metadata/stringMetadata";
 import { NotComparableError } from "../NotComparableError";
-import { DataType } from "./dataType";
+import { DataType } from "./DataType";
 import { RegisteredDataType } from "./dataTypeFactory";
-import { DataTypes } from "./dataTypes";
 
 @RegisteredDataType
 export class StringType extends DataType<string, IStringMetadata> {

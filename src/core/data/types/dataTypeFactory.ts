@@ -1,6 +1,6 @@
+import { DataTypes } from "../interfaces/dataTypes";
 import { DataTypeBase } from "./dataTypeBase";
-import { IDataTypeConstructor } from "./dataTypeConstructor";
-import { DataTypes } from "./dataTypes";
+import { IDataTypeConstructor } from "./DataTypeConstructor";
 
 export namespace DataTypeFactory {
     const dataTypes: { [key: number]: DataTypeBase } = {};

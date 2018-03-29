@@ -1,8 +1,8 @@
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 
-import { Comparability } from "../../../core/data/Comparability";
-import { DataTypes } from "../../../core/data/types/dataTypes";
+import { Comparability } from "../../../core/data/interfaces/Comparability";
+import { DataTypes } from "../../../core/data/interfaces/dataTypes";
 import { Aspect } from "./Aspect";
 
 @Entity()

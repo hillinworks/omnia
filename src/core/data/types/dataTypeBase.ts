@@ -1,5 +1,5 @@
 import { LocMessage } from "../../localization/LocMessage";
-import { DataTypes } from "./dataTypes";
+import { DataTypes } from "../interfaces/dataTypes";
 
 export abstract class DataTypeBase {
 
