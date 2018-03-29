@@ -24,6 +24,8 @@ export * from "./GraphQLContext";
 export * from "./graphql-error-handling";
 export * from "./container";
 
+export * from "./CreateEnumType";
+
 // -------------------------------------------------------------------------
 // Main Functions
 // -------------------------------------------------------------------------

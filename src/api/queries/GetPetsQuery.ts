@@ -7,7 +7,9 @@ import { PetService } from "../services/PetService";
 import { PetType } from "../types/PetType";
 
 @Query()
-export class GetPetsQuery extends AbstractGraphQLQuery<GraphQLContext<any, any>, Pet[], any> implements GraphQLFieldConfig {
+export class GetPetsQuery
+    extends AbstractGraphQLQuery<GraphQLContext<any, any>, Pet[], any>
+    implements GraphQLFieldConfig<any, GraphQLContext<any, any>, any> {
     public type = new GraphQLList(PetType);
     public allow = [];
     public args = {};

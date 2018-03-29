@@ -6,7 +6,7 @@ import { GraphQLContext } from "../../lib/graphql";
 import { User } from "../models/User";
 import { PetOfUserType } from "./PetType";
 
-const UserFields: GraphQLFieldConfigMap = {
+const UserFields: GraphQLFieldConfigMap<any, any> = {
     id: {
         type: GraphQLID,
         description: "The ID",

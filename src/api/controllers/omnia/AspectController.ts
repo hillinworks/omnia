@@ -2,7 +2,6 @@ import {
     Body, Delete, Get, JsonController, OnUndefined, Param, Post, Put
 } from "routing-controllers";
 
-import { ICompositeKey } from "../../../core/CompositeKey";
 import { AspectNotFoundError } from "../../errors/omnia/AspectNotFoundError";
 import { Aspect } from "../../models/omnia/Aspect";
 import { AspectService } from "../../services/omnia/AspectService";
@@ -18,10 +17,10 @@ export class AspectController {
         return this.aspectService.find();
     }
 
-    @Get("/:fullKey")
+    @Get("/:key")
     @OnUndefined(AspectNotFoundError)
-    public findOne(@Param("fullKey") fullKey: string): Promise<Aspect | undefined> {
-        return this.aspectService.findOne(ICompositeKey.parse(fullKey));
+    public findOne(@Param("key") key: string): Promise<Aspect | undefined> {
+        return this.aspectService.findOne(key);
     }
 
     @Post()
@@ -29,13 +28,13 @@ export class AspectController {
         return this.aspectService.create(aspect);
     }
 
-    @Put("/:fullKey")
-    public update(@Param("fullKey") fullKey: string, @Body() aspect: Aspect): Promise<Aspect> {
-        return this.aspectService.update(ICompositeKey.parse(fullKey), aspect);
+    @Put("/:key")
+    public update(@Param("key") key: string, @Body() aspect: Aspect): Promise<Aspect> {
+        return this.aspectService.update(key, aspect);
     }
 
-    @Delete("/:fullKey")
-    public delete(@Param("fullKey") fullKey: string): Promise<void> {
-        return this.aspectService.delete(ICompositeKey.parse(fullKey));
+    @Delete("/:key")
+    public delete(@Param("key") key: string): Promise<void> {
+        return this.aspectService.delete(key);
     }
 }

@@ -19,8 +19,8 @@ export class EntryService {
         return this.aspectRepository.find();
     }
 
-    public findOne(namespace: string, key: string): Promise<Entry | undefined> {
-        return this.aspectRepository.findOne({ namespace, key });
+    public findOne(key: string): Promise<Entry | undefined> {
+        return this.aspectRepository.findOne({ key });
     }
 
     public async create(aspect: Entry): Promise<Entry> {
@@ -29,13 +29,12 @@ export class EntryService {
         return newEntry;
     }
 
-    public update(namespace: string, key: string, aspect: Entry): Promise<Entry> {
-        aspect.namespace = namespace;
-        aspect.key = key;
-        return this.aspectRepository.save(aspect);
+    public update(key: string, entry: Entry): Promise<Entry> {
+        entry.key = key;
+        return this.aspectRepository.save(entry);
     }
 
-    public delete(namespace: string, key: string): Promise<void> {
-        return this.aspectRepository.delete({ namespace, key });
+    public delete(key: string): Promise<void> {
+        return this.aspectRepository.delete({ key });
     }
 }

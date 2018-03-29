@@ -7,7 +7,9 @@ import { UserService } from "../services/UserService";
 import { UserType } from "../types/UserType";
 
 @Query()
-export class GetUsersQuery extends AbstractGraphQLQuery<GraphQLContext<any, any>, User[], any> implements GraphQLFieldConfig {
+export class GetUsersQuery
+    extends AbstractGraphQLQuery<GraphQLContext<any, any>, User[], any>
+    implements GraphQLFieldConfig<any, GraphQLContext<any, any>, any> {
     public type = new GraphQLList(UserType);
     public allow = [];
     public args = {};

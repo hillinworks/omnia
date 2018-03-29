@@ -6,7 +6,7 @@ import { GraphQLContext } from "../../lib/graphql";
 import { Pet } from "../models/Pet";
 import { OwnerType } from "./UserType";
 
-const PetFields: GraphQLFieldConfigMap = {
+const PetFields: GraphQLFieldConfigMap<any, any> = {
     id: {
         type: GraphQLID,
         description: "The ID",
@@ -30,12 +30,14 @@ export const PetOfUserType = new GraphQLObjectType({
 export const PetType = new GraphQLObjectType({
     name: "Pet",
     description: "A single pet.",
-    fields: () => ({ ...PetFields, ...{
-        owner: {
-            type: OwnerType,
-            description: "The owner of the pet",
-            resolve: (pet: Pet, args: any, context: GraphQLContext<any, any>) =>
-                context.dataLoaders.user.load(pet.userId),
+    fields: () => ({
+        ...PetFields, ...{
+            owner: {
+                type: OwnerType,
+                description: "The owner of the pet",
+                resolve: (pet: Pet, args: any, context: GraphQLContext<any, any>) =>
+                    context.dataLoaders.user.load(pet.userId),
+            },
         },
-    } }),
+    }),
 });

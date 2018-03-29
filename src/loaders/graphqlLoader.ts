@@ -5,6 +5,9 @@ import { PetRepository } from "../api/repositories/PetRepository";
 import { UserRepository } from "../api/repositories/UserRepository";
 import { env } from "../env";
 import { createDataLoader, createGraphQLServer } from "../lib/graphql";
+import { Aspect } from "../api/models/omnia/Aspect";
+import { Property } from "../api/models/omnia/Property";
+import { PropertyRepository } from "../api/repositories/omnia/PropertyRepository";
 
 export const graphqlLoader: MicroframeworkLoader = (settings: MicroframeworkSettings | undefined) => {
     if (settings && env.graphql.enabled) {
@@ -21,6 +24,14 @@ export const graphqlLoader: MicroframeworkLoader = (settings: MicroframeworkSett
                 petsByUserIds: createDataLoader(PetRepository, {
                     method: "findByUserIds",
                     key: "userId",
+                    multiple: true,
+                }),
+
+                aspect: createDataLoader(Aspect),
+                property: createDataLoader(Property),
+                propertiesByAspectKey: createDataLoader(PropertyRepository, {
+                    method: "findByAspectKeys",
+                    key: "aspectKey",
                     multiple: true,
                 }),
             },

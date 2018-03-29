@@ -14,7 +14,9 @@ interface CreatePetMutationArguments {
 }
 
 @Mutation()
-export class CreatePetMutation extends AbstractGraphQLMutation<GraphQLContext<any, any>, Pet, CreatePetMutationArguments> implements GraphQLFieldConfig {
+export class CreatePetMutation
+    extends AbstractGraphQLMutation<GraphQLContext<any, any>, Pet, CreatePetMutationArguments>
+    implements GraphQLFieldConfig<any, GraphQLContext<any, any>, CreatePetMutationArguments> {
     public type = PetType;
     public args = {
         name: { type: new GraphQLNonNull(GraphQLString) },

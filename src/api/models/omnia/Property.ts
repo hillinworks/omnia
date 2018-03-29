@@ -8,12 +8,7 @@ import { Aspect } from "./Aspect";
 @Entity()
 export class Property {
 
-    @PrimaryColumn("varchar", { length: 512, collation: "ascii_general_ci", charset: "ascii" })
-    @IsNotEmpty()
-    public namespace: string;
-
-    @PrimaryColumn("varchar", { length: 64, collation: "ascii_general_ci", charset: "ascii" })
-    @IsNotEmpty()
+    @PrimaryColumn("varchar", { length: 1024, collation: "ascii_bin", charset: "ascii" })
     public key: string;
 
     @Column("tinyint")
@@ -36,6 +31,10 @@ export class Property {
     @Column("enum", { enum: Comparability, default: Comparability.NotComparable.toString() })
     public comparability: Comparability;
 
+    @Column({ type: "varchar", nullable: true, length: 1024, collation: "ascii_bin", charset: "ascii" })
+    public aspectKey: string;
+
     @ManyToOne(type => Aspect)
     public aspect: Promise<Aspect>;
+
 }
