@@ -1,5 +1,5 @@
 import { LocMessage } from "../../localization/LocMessage";
-import { INoMetadata } from "../metadata/noMetadata";
+import { INoMetadata } from "../interfaces/metadata/INoMetadata";
 import { DataTypeBase } from "./dataTypeBase";
 
 export abstract class DataType<TValue, TMetadata = INoMetadata> extends DataTypeBase {

@@ -17,5 +17,8 @@ export const events = {
         entry: {
             created: "onOmniaEntryCreated",
         },
+        enumeration: {
+            created: "onEnumerationCreated",
+        },
     },
 };

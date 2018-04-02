@@ -1,7 +1,7 @@
 import { localize } from "../../localization/localize";
 import { LocMessage } from "../../localization/locMessage";
 import { DataTypes } from "../interfaces/dataTypes";
-import { IStringMetadata } from "../metadata/stringMetadata";
+import { IStringMetadata } from "../interfaces/metadata/IStringMetadata";
 import { NotComparableError } from "../NotComparableError";
 import { DataType } from "./DataType";
 import { RegisteredDataType } from "./dataTypeFactory";

@@ -1,12 +1,16 @@
 import { LocMessage } from "../../localization/locMessage";
-import { INumberMetadata } from "../metadata/numberMetadata";
-import { NotComparableError } from "../NotComparableError";
+import { DataTypes } from "../interfaces/dataTypes";
+import { INumberMetadata } from "../interfaces/metadata/INumberMetadata";
 import { DataType } from "./DataType";
 
-export abstract class NumberType<TMetadata extends INumberMetadata> extends DataType<number, TMetadata> {
+export class NumberType<TMetadata extends INumberMetadata> extends DataType<number, TMetadata> {
+
+    public get name(): string { return "number"; }
+
+    public get key(): DataTypes { return DataTypes.Number; }
 
     protected compareImpl(a: number, b: number): number {
-        throw new NotComparableError();
+        return a - b;
     }
 
     protected coerceImpl(data: number, metadata: TMetadata): number {

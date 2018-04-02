@@ -9,32 +9,32 @@ import { events } from "../../subscribers/events";
 @Service()
 export class EntryService {
     constructor(
-        @OrmRepository() private aspectRepository: EntryRepository,
+        @OrmRepository() private entryRepository: EntryRepository,
         @EventDispatcher() private eventDispatcher: EventDispatcherInterface
     ) {
 
     }
 
     public find(): Promise<Entry[]> {
-        return this.aspectRepository.find();
+        return this.entryRepository.find();
     }
 
     public findOne(key: string): Promise<Entry | undefined> {
-        return this.aspectRepository.findOne({ key });
+        return this.entryRepository.findOne({ key });
     }
 
-    public async create(aspect: Entry): Promise<Entry> {
-        const newEntry = await this.aspectRepository.save(aspect);
-        this.eventDispatcher.dispatch(events.omnia.aspect.created, newEntry);
+    public async create(entry: Entry): Promise<Entry> {
+        const newEntry = await this.entryRepository.save(entry);
+        this.eventDispatcher.dispatch(events.omnia.entry.created, newEntry);
         return newEntry;
     }
 
     public update(key: string, entry: Entry): Promise<Entry> {
         entry.key = key;
-        return this.aspectRepository.save(entry);
+        return this.entryRepository.save(entry);
     }
 
     public delete(key: string): Promise<void> {
-        return this.aspectRepository.delete({ key });
+        return this.entryRepository.delete({ key });
     }
 }

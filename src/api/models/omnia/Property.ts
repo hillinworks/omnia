@@ -11,21 +11,26 @@ export class Property {
     @PrimaryColumn("varchar", { length: 1024, collation: "ascii_bin", charset: "ascii" })
     public key: string;
 
-    @Column("tinyint")
+    @Column("tinyint", { default: false })
+    @IsNotEmpty()
     public isObsolete: boolean;
 
     @Column("varchar", { length: 128 })
     @IsNotEmpty()
     public name: string;
 
-    @Column("text")
+    @Column("text", { nullable: true })
     public description: string;
 
     @Column("enum", { enum: DataTypes })
     @IsNotEmpty()
     public type: DataTypes;
 
-    @Column("json")
+    @Column("tinyint", { default: 0 })
+    @IsNotEmpty()
+    public isCollection: boolean;
+
+    @Column("json", { nullable: true })
     public metadata: any;
 
     @Column("enum", { enum: Comparability, default: Comparability.NotComparable.toString() })

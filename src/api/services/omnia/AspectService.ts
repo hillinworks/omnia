@@ -40,9 +40,8 @@ export class AspectService {
             const oldProperties = await this.propertyRepository.find({ aspectKey: aspect.key });
             const obsoleteProperties = L(oldProperties).exceptKey(aspect.properties, p => p.key).toArray();
             for (const obsoleteProperty of obsoleteProperties) {
-                obsoleteProperty.isObsolete = true;
+                await this.propertyRepository.deleteById(obsoleteProperty.key);
             }
-            await this.propertyRepository.save(obsoleteProperties);
         }
 
         this.updatePropertyAspects(aspect);
