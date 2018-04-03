@@ -1,3 +1,4 @@
+import { IsNotEmpty } from "class-validator";
 import {
     Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn
 } from "typeorm";
@@ -10,6 +11,10 @@ export class Entry {
 
     @PrimaryColumn("varchar", { length: 1024, collation: "ascii_bin", charset: "ascii" })
     public key: string;
+
+    @Column("varchar", { length: 128 })
+    @IsNotEmpty()
+    public name: string;
 
     @ManyToMany(type => Aspect, { eager: true })
     @JoinTable()

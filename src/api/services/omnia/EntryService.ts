@@ -19,6 +19,16 @@ export class EntryService {
         return this.entryRepository.find();
     }
 
+    public filter(keyword: string): Promise<Entry[] | undefined> {
+        let queryBuilder = this.entryRepository.createQueryBuilder("entry");
+        if (keyword && keyword.length > 0) {
+            queryBuilder = queryBuilder.where(`entry.name LIKE '%${keyword}%'`);
+        }
+        queryBuilder = queryBuilder.limit(10);
+        console.log(queryBuilder.getSql());
+        return queryBuilder.getMany();
+    }
+
     public findOne(key: string): Promise<Entry | undefined> {
         return this.entryRepository.findOne({ key });
     }
