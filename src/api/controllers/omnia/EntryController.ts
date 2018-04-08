@@ -1,5 +1,5 @@
 import {
-    Body, Delete, Get, JsonController, OnUndefined, Param, Post, Put
+    Body, Delete, Get, JsonController, OnUndefined, Param, Post, Put, QueryParam
 } from "routing-controllers";
 
 import { EntryNotFoundError } from "../../errors/omnia/EntryNotFoundError";
@@ -18,8 +18,13 @@ export class EntryController {
     }
 
     @Get("/filter/:keyword")
-    public filter(@Param("keyword") keyword: string): Promise<Entry[] | undefined> {
-        return this.entryService.filter(keyword);
+    @Get("/filter/")
+    public filter(
+        @Param("keyword") keyword: string,
+        @QueryParam("max") maxCount: number,
+        @QueryParam("content") includingContent: boolean)
+         : Promise<Entry[] | undefined> {
+        return this.entryService.filter(keyword, maxCount, includingContent);
     }
 
     @Get("/:key")

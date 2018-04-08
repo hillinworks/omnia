@@ -19,14 +19,21 @@ export class EntryService {
         return this.entryRepository.find();
     }
 
-    public filter(keyword: string): Promise<Entry[] | undefined> {
+    public async filter(keyword: string, maxCount: number, includingContent: boolean): Promise<Entry[] | undefined> {
         let queryBuilder = this.entryRepository.createQueryBuilder("entry");
         if (keyword && keyword.length > 0) {
             queryBuilder = queryBuilder.where(`entry.name LIKE '%${keyword}%'`);
         }
-        queryBuilder = queryBuilder.limit(10);
+        queryBuilder = queryBuilder.limit(Math.min(maxCount, 256));
         console.log(queryBuilder.getSql());
-        return queryBuilder.getMany();
+        const result = await queryBuilder.getMany();
+        if (!includingContent) {
+            for (const entry of result) {
+                entry.data = undefined;
+            }
+        }
+
+        return result;
     }
 
     public findOne(key: string): Promise<Entry | undefined> {
